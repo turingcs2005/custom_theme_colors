@@ -1,1 +1,67 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+@import '/src/app/app-data/custom-colors.scss';
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$custom-theme-primary: mat-palette($custom-primary);
+$custom-theme-accent: mat-palette($custom-accent, A700, A100, A400);
+$custom-theme-warn: mat-palette($mat-red);
+
+$primary300: mat-color($custom-theme-primary, 300);
+$primary500: mat-color($custom-theme-primary, 500);
+$primary800: mat-color($custom-theme-primary, 800);
+
+$accent300: mat-color($custom-theme-accent, 300);
+$accent800: mat-color($custom-theme-accent, 800);
+
+$warn: mat-color($custom-theme-warn, 500);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+
+$custom-theme-theme: mat-light-theme((
+  color: (
+    primary: $custom-theme-primary,
+    accent: $custom-theme-accent,
+    warn: $custom-theme-warn
+  )
+));
+
+
+@include angular-material-color($custom-theme-theme);
+
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Custom styles
+.padded {
+    padding: 20px;
+}
+
+code {
+  color: $accent800;
+  font-weight: bold;
+}
+
+.warn {
+  color: $warn;
+  font-weight:bold;
+}
